@@ -34,7 +34,6 @@ export default function HexConverter () {
     if (hexColor.code.length === 7 && HEX_PATTERN.test(hexColor.code)) {
         backgroundColorElement.style.backgroundColor = hexColor.code;
         setColor((prevColor) => ({...prevColor, rgb: hexColor.code}));
-        console.log('we here', hexColor.code);
     }
 
     if (hexColor.code.length === 7 && !HEX_PATTERN.test(hexColor.code)) {
@@ -59,7 +58,7 @@ export default function HexConverter () {
         <input value={hexColor.code} onInput={handleColorChange} placeholder="Type Hex code" className="color-input-field"/>
       </div>
       <div>
-        <input value={`rgb ( ${ hexColor.error? 'Wrong Hex Code!' : hexToRgb(hexColor.rgb) || hexColor.rgb} )`} readOnly className="color-output-field"/>
+        <input value={ hexColor.error? 'Wrong Hex Code!' : `rgb (${hexToRgb(hexColor.rgb)})` || hexColor.rgb} readOnly className="color-output-field"/>
       </div>
     </div>
   )
